@@ -10,16 +10,26 @@ public class TestScript : MonoBehaviour
 
     void Start()
     {
-        //mcamera = Camera.main;
+        mcamera = Camera.main;
     }
 
     private void Update()
     {
-        mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(mouseposition);
+        Raycast();
+    }
+
+    public void Raycast()
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            changelocation.transform.position = new Vector3(mouseposition.x, 0.50f, mouseposition.z);
+            Ray ray = mcamera.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, 20))
+            {
+                changelocation.transform.position = hit.point;
+            }
         }
     }
 }
