@@ -12,6 +12,6 @@ public enum CircleTypes
 public class CircleHandler : MonoBehaviour
 {
 
-	public 
+	//public 
 
 }
