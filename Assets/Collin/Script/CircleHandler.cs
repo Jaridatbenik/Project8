@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//public enum 
+public enum CircleTypes
+{
+    Teleportation,
+    ObjectSelection
+}
 
-public class CircleHandler : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class CircleHandler : MonoBehaviour
+{
+
+	public 
+
 }
