@@ -46,10 +46,12 @@ public class TeleportHandler1 : MonoBehaviour
                     cubeText.text = cubeInfo.StringInfo + "\n" + cubeInfo.FloatInfo.ToString();
                     cubeText.rectTransform.position = Camera.main.WorldToScreenPoint(hit.transform.position + new Vector3(0, 50));
                 }
-
-                //changelocation.transform.position = hit.point;
-                //canTeleport = false;
-                //circleHandler.SpawnCircle(1.8f, CircleTypes.Teleportation, SetCanTeleportAgain, SetCanTeleportAgain);
+                else
+                {
+                    changelocation.transform.position = hit.point;
+                    canTeleport = false;
+                    circleHandler.SpawnCircle(1.8f, CircleTypes.Teleportation, SetCanTeleportAgain, SetCanTeleportAgain);
+                }
             }
         }
     }
