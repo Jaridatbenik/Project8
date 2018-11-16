@@ -33,6 +33,7 @@ public class TeleportHandler : MonoBehaviour
             Ray ray = mcamera.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
+            Debug.DrawLine(ray.origin, ray.direction);
 
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 20))
             {
