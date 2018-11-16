@@ -108,9 +108,13 @@ namespace Valve.VR
 
         protected virtual void OnDisable()
         {
+            
             SteamVR_Input.OnPosesUpdated -= SteamVR_Input_OnPosesUpdated;
-            poseAction.RemoveOnDeviceConnectedChanged(inputSource, OnDeviceConnectedChanged);
-            poseAction.RemoveOnTrackingChanged(inputSource, OnTrackingChanged);
+
+                poseAction.RemoveOnDeviceConnectedChanged(inputSource, OnDeviceConnectedChanged);
+
+                poseAction.RemoveOnTrackingChanged(inputSource, OnTrackingChanged);
+
 
             historyBuffer.Clear();
         }

@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using CubeInfo;
 
-public class TestScript : MonoBehaviour
+public class TeleportHandler1 : MonoBehaviour
 {
     Camera mcamera;
     public GameObject changelocation;
     Vector3 mouseposition = new Vector3();
+    public Text cubeText;
+
+    CubeInfomation cubeInfo = new CubeInfomation();
 
     CircleHandler circleHandler;
 
@@ -20,7 +25,7 @@ public class TestScript : MonoBehaviour
 
     private void Update()
     {
-        if (canTeleport)
+        //if (canTeleport)
         {
             Raycast();
         }
@@ -36,9 +41,17 @@ public class TestScript : MonoBehaviour
 
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 20))
             {
-                changelocation.transform.position = hit.point;
-                canTeleport = false;
-                circleHandler.SpawnCircle(1.8f, CircleTypes.Teleportation, SetCanTeleportAgain, SetCanTeleportAgain);
+                if(hit.transform.tag == "CubeInfo")
+                {
+                    cubeText.text = cubeInfo.StringInfo + "\n" + cubeInfo.FloatInfo.ToString();
+                    cubeText.rectTransform.position = Camera.main.WorldToScreenPoint(hit.transform.position + new Vector3(0, 50));
+                }
+                else
+                {
+                    changelocation.transform.position = hit.point;
+                    canTeleport = false;
+                    circleHandler.SpawnCircle(1.8f, CircleTypes.Teleportation, SetCanTeleportAgain, SetCanTeleportAgain);
+                }
             }
         }
     }
