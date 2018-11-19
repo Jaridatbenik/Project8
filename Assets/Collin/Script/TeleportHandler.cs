@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestScript : MonoBehaviour
+public class TeleportHandler : MonoBehaviour
 {
     Camera mcamera;
     public GameObject changelocation;
@@ -28,22 +28,33 @@ public class TestScript : MonoBehaviour
 
     public void Raycast()
     {
+
+        Debug.DrawRay(Input.mousePosition, mcamera.ScreenToWorldPoint(Input.mousePosition), Color.green, 10000f);
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mcamera.ScreenPointToRay(Input.mousePosition);
+            
 
             RaycastHit hit;
 
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 20))
             {
-                changelocation.transform.position = hit.point;
-                canTeleport = false;
-                circleHandler.SpawnCircle(1.8f, CircleTypes.Teleportation, SetCanTeleportAgain, SetCanTeleportAgain);
+                TeleportToLocation(hit.point);
             }
         }
     }
 
-    void SetCanTeleportAgain()
+    public void TeleportToLocation(Vector3 pos)
+    {
+        if (canTeleport)
+        {
+            changelocation.transform.position = pos;
+            canTeleport = false;
+            circleHandler.SpawnCircle(1.8f, CircleTypes.Teleportation, SetCanTeleportAgain, SetCanTeleportAgain);
+        }
+    }
+
+    public void SetCanTeleportAgain()
     {
         canTeleport = true;
     }
