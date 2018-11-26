@@ -9,7 +9,6 @@ public class ObjectMoverRay : MonoBehaviour
     GameObject target;
     public GameObject cameraParent;
     public GameObject targetObject;
-    public AIController ac;
     public ObstacleScript ob;
     public bool holdsObject = false;
     ObjectMover om;
