@@ -1,0 +1,7 @@
+<Line1>: This is the first sentence.
+<Line2>: This is the second sentence.
+<Line3>: This is the third sentence.
+(Question1): Is first question? @Yes it is @no it isn't @I dont know, is it
+<Answer1>: You are right
+<Answer2>: You are wrong
+<Answer3>: Stop this
