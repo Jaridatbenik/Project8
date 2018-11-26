@@ -9,8 +9,6 @@ public class ObjectMoverRay : MonoBehaviour
     GameObject target;
     public GameObject cameraParent;
     public GameObject targetObject;
-    public AIController ac;
-    public ObstacleScript ob;
     public bool holdsObject = false;
     ObjectMover om;
 
@@ -28,36 +26,7 @@ public class ObjectMoverRay : MonoBehaviour
         {
             target = raycastHit.collider.gameObject;
 
-            if (target.gameObject.tag == "Obstacle" && (ob.obstacleRight1 || ob.obstacleLeft1) && holdsObject == false)
-            {
-                timerRay += Time.deltaTime;
-                if (timerRay >= 2)
-                {
-                    om = raycastHit.collider.gameObject.GetComponent<ObjectMover>();
-                    timerRay = 0;
-                    target.transform.parent = cameraParent.transform;
-                    target.layer = 2;
-                    holdsObject = true;
-                    ob.obstacleLeft1 = false;
-                    ob.obstacleRight1 = false;
-                }
-            }
-            else if (target.gameObject.tag == "Obstacle 1" && (ob.obstacleRight2 || ob.obstacleLeft2) && holdsObject == false)
-            {
-                timerRay += Time.deltaTime;
-                if (timerRay >= 2)
-                {
-                    om = raycastHit.collider.gameObject.GetComponent<ObjectMover>();
-                    timerRay = 0;
-                    target.transform.parent = cameraParent.transform;
-                    target.layer = 2;
-                    holdsObject = true;
-                    ob.obstacleLeft2 = false;
-                    ob.obstacleRight2 = false;
-                }
-            }
-
-            else if (target.gameObject.tag == "Snappable" && holdsObject == true)
+            if (target.gameObject.tag == "Snappable" && holdsObject == true)
             {
                 timer += Time.deltaTime;
                 if (timer >= 2)
