@@ -1,10 +1,10 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class ShowTimer : MonoBehaviour {
-
-
-    [SerializeField]TextMeshProUGUI textfield;
+public class ShowTimer : MonoBehaviour
+{
+    [SerializeField]
+    TextMeshProUGUI textfield;
     Timer timer;
 
     void Start()
@@ -15,7 +15,7 @@ public class ShowTimer : MonoBehaviour {
     void FixedUpdate()
     {
         string sec = Mathf.RoundToInt(timer.secondsTimer).ToString();
-        string min = timer.minutesTimer.ToString();        
+        string min = timer.minutesTimer.ToString();
 
         min = AddExtraZero(min);
         sec = AddExtraZero(sec);
@@ -25,7 +25,7 @@ public class ShowTimer : MonoBehaviour {
 
     string AddExtraZero(string s)
     {
-        if(s.Length == 1)
+        if (s.Length == 1)
         {
             s = "0" + s;
         }
