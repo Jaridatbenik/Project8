@@ -10,6 +10,7 @@ public class TeleportHandler1 : MonoBehaviour
     public GameObject changelocation;
     Vector3 mouseposition = new Vector3();
     public Text cubeText;
+    public Image infoImage;
 
     CubeInfomation cubeInfo = new CubeInfomation();
 
@@ -44,7 +45,7 @@ public class TeleportHandler1 : MonoBehaviour
                 if(hit.transform.tag == "CubeInfo")
                 {
                     cubeText.text = cubeInfo.StringInfo + "\n" + cubeInfo.FloatInfo.ToString();
-                    cubeText.rectTransform.position = Camera.main.WorldToScreenPoint(hit.transform.position + new Vector3(0, 50));
+                    infoImage.rectTransform.position = Camera.main.WorldToScreenPoint(hit.transform.position + new Vector3(0, 0, 1.5f));
                 }
                 else
                 {

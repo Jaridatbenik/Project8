@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - CubeInfo
+<<<<<<< HEAD
   - BuilderApp
+=======
+  - Selectable
+>>>>>>> f1aac7550888e687eabfc79d0a8bc40bfff4d9b8
   layers:
   - Default
   - TransparentFX

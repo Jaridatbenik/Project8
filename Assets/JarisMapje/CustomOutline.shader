@@ -5,6 +5,7 @@
 		_Outline ("Outline width", Range (0, 1)) = .1
 		_MainTex ("Base (RGB)", 2D) = "white" { }
 	}
+
  
 CGINCLUDE
 #include "UnityCG.cginc"
@@ -31,6 +32,7 @@ v2f vert(appdata v) {
 	o.pos = UnityObjectToClipPos(v.vertex);
 
 	o.color = _OutlineColor;
+	
 	return o;
 }
 ENDCG
@@ -41,6 +43,13 @@ ENDCG
 		CGPROGRAM
 		#pragma surface surf Lambert
 		 
+
+	#pragma target 3.0
+
+	UNITY_INSTANCING_BUFFER_START(Props)
+	// put more per-instance properties here
+	UNITY_INSTANCING_BUFFER_END(Props)
+
 		sampler2D _MainTex;
 		fixed4 _Color;
 		 
