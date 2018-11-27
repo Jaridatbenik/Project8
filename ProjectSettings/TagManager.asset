@@ -4,12 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CubeInfo
-<<<<<<< HEAD
-  - BuilderApp
-=======
-  - Selectable
->>>>>>> f1aac7550888e687eabfc79d0a8bc40bfff4d9b8
+  - Hands
   layers:
   - Default
   - TransparentFX
@@ -19,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - Environment
+  - 
+  - 
   - 
   - 
   - 

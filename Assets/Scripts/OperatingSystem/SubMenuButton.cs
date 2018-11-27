@@ -4,8 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class SubMenuButton : MonoBehaviour
-{
-    
+{    
     RectTransform t;
 
     [Header("Example: 'Settings'. No 'SubMenu/' needed.")]
@@ -51,6 +50,7 @@ public class SubMenuButton : MonoBehaviour
             {
                 SubMenu newMenu = Resources.Load<SubMenu>("SubMenus/" + submenuName);
                 submenu = Instantiate(newMenu, submenuCanvas);
+                submenu.transform.SetAsLastSibling();
             }
             catch
             {
@@ -84,6 +84,7 @@ public class SubMenuButton : MonoBehaviour
         if (submenu != null)
         {
             submenu.gameObject.SetActive(true);
+            submenu.transform.SetAsLastSibling();
 
             if (!isParent)
             {

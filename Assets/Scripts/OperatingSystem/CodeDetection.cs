@@ -17,8 +17,11 @@ public class CodeDetection : MonoBehaviour
     [SerializeField]
     float correctCallDelay = 0.45f;
 
+    VR_Lock vrLock;
+
     void Start()
     {
+        vrLock = FindObjectOfType<VR_Lock>();
         inputField = GetComponent<TMP_InputField>();    
 
         if(GameObject.FindGameObjectWithTag("BuilderApp") != null)
@@ -51,7 +54,9 @@ public class CodeDetection : MonoBehaviour
 
 
     void Correct()
-    {        
+    {
+        vrLock.ChangeLockState(true);
+
         if (correctCalls != null)
             correctCalls.Invoke();
     }
