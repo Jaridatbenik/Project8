@@ -7,10 +7,14 @@ public class ObjectPicker : MonoBehaviour
 {
     SteamVR_LaserPointer pointer;
 
+    [HideInInspector]
     public GameObject currentSelected;
+    [HideInInspector]
     public PickableObject currentTarget;
-
+    [HideInInspector]
     public bool isOnObject = false;
+
+    public Transform parenter;
 
     void Start()
     {
@@ -66,8 +70,8 @@ public class ObjectPicker : MonoBehaviour
     {
         try
         {
-            currentSelected.transform.SetParent(transform);
-            currentSelected.transform.localPosition = new Vector3(0, 0, 0.2f);
+            currentSelected.transform.SetParent(parenter);
+            currentSelected.transform.localPosition = new Vector3(0, 0, 0.2f) + currentSelected.GetComponent<PickableObject>().offset;
             pointer.enabled = false;
         }
         catch { }

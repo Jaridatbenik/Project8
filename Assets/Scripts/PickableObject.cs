@@ -5,4 +5,6 @@ using UnityEngine;
 public class PickableObject : MonoBehaviour {
 
     public GameObject moveParent;
+
+    public Vector3 offset;
 }
