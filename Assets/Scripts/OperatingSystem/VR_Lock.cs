@@ -19,9 +19,9 @@ public class VR_Lock : MonoBehaviour
 
     public void ChangeLockState(bool b)
     {
-        vrCam.enabled = b;
+        //vrCam.enabled = b;
 
-        for(int i = 0; i < hands.Count; i++)
+        //for(int i = 0; i < hands.Count; i++)
         {
             //hands[i].SetActive(b);
             //(de)activate controller stuff here.
