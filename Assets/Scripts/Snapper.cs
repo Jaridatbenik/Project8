@@ -25,6 +25,7 @@ public class Snapper : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+        //if(col.gameObject.GetComponent<>)
         this.col = col;
         circleHand.SpawnCircle(4f, CircleTypes.ObjectSelection, CheckIfCorrect, Canceled);
         hand.SpawnInBuildParticles(transform.position);
