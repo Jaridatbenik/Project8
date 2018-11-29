@@ -79,7 +79,7 @@ public class CircleHandler : MonoBehaviour
                 }
             }else
             {
-                CancelCircle();
+                ResetCircle();
                 FinishCircle();
             }
         }
@@ -93,11 +93,16 @@ public class CircleHandler : MonoBehaviour
 
     public void CancelCircle()
     {
+        ResetCircle();
+        CircleEventHandler.RunEvents(false);
+    }
+
+    public void ResetCircle()
+    {
         inTimer = false;
         timer = 0;
         maxTime = 0;
         image.fillAmount = 0;
-        CircleEventHandler.RunEvents(false);
     }
 
     public void TestMethod()
@@ -108,8 +113,8 @@ public class CircleHandler : MonoBehaviour
 
 public static class CircleEventHandler
 { 
-    static List<Action> onComplete = new List<Action>();
-    static List<Action> onCancel = new List<Action>();
+    public static List<Action> onComplete = new List<Action>();
+    public static List<Action> onCancel = new List<Action>();
 
     public static void SubscribeToEvent(Action complete, Action cancel)
     {
@@ -133,7 +138,7 @@ public static class CircleEventHandler
         {
             for (int i = 0; i < onComplete.Count; i++)
             {
-                onComplete[i].Invoke();
+                try { onComplete[i].Invoke(); } catch { }
             }
 
             onComplete.Clear();
@@ -141,7 +146,7 @@ public static class CircleEventHandler
         {
             for (int i = 0; i < onCancel.Count; i++)
             {
-                onCancel[i].Invoke();
+                try { onCancel[i].Invoke(); } catch { }
             }
 
             onCancel.Clear();
@@ -157,7 +162,7 @@ public static class CircleEventHandler
         {
             for (int i = 0; i < onComplete.Count; i++)
             {
-                onComplete[i].Invoke();
+                try { onComplete[i].Invoke(); } catch { }
             }
 
             if (boolin)
@@ -168,7 +173,7 @@ public static class CircleEventHandler
         {
             for (int i = 0; i < onCancel.Count; i++)
             {
-                onCancel[i].Invoke();
+                try { onCancel[i].Invoke(); } catch { }
             }
 
             if (boolin)
