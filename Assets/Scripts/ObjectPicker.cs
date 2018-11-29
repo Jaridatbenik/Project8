@@ -8,7 +8,7 @@ public class ObjectPicker : MonoBehaviour
     SteamVR_LaserPointer pointer;
 
     public GameObject currentSelected;
-    public Targetable currentTarget;
+    public PickableObject currentTarget;
 
     public bool isOnObject = false;
 
@@ -36,43 +36,64 @@ public class ObjectPicker : MonoBehaviour
                 }
             }
 
-
             if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
             {
+                PickupObject();
+                /*
                 currentSelected.SetActive(false);
                 currentTarget.referenceObject.SetActive(true);
                 currentTarget.referenceObject.transform.SetParent(transform);
                 currentTarget.referenceObject.transform.localPosition = new Vector3(0, 0, 0.2f);
                 pointer.enabled = false;
+                */
             }
             if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
             {
+                ReleaseObject();
+                /*
                 currentSelected.SetActive(true);
                 currentTarget.referenceObject.SetActive(false);
                 currentTarget.referenceObject.transform.SetParent(null);
                 currentTarget.referenceObject.transform.position = new Vector3(0, 0, 0);
                 pointer.enabled = true;
+                */
             }
         }
     }
 
+    void PickupObject()
+    {
+        try
+        {
+            currentSelected.transform.SetParent(transform);
+            currentSelected.transform.localPosition = new Vector3(0, 0, 0.2f);
+            pointer.enabled = false;
+        }
+        catch { }
+    }
+
+    public void ReleaseObject()
+    {
+        try
+        {
+            currentSelected.transform.SetParent(null);
+            pointer.enabled = true;
+        }
+        catch { }
+    }
+
     private void HandlePointerIn(object sender, PointerEventArgs e)
     {
-        if (e.target.gameObject.GetComponent<Targetable>() != null)
+        if (e.target.gameObject.GetComponent<PickableObject>() != null)
         {
-            currentSelected = e.target.gameObject;
-            currentTarget = e.target.gameObject.GetComponent<Targetable>();
+            currentSelected = e.target.GetComponent<PickableObject>().moveParent;
+            currentTarget = e.target.gameObject.GetComponent<PickableObject>();
             isOnObject = true;
         }
     }
 
     private void HandlePointerOut(object sender, PointerEventArgs e)
     {
-        if (currentSelected != null)
-        {
-            currentSelected.gameObject.GetComponent<Renderer>().material.color = Color.red;
-        }
-            isOnObject = false;
-        
+        isOnObject = false;
     }
 }
