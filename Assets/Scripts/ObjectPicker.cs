@@ -27,7 +27,8 @@ public class ObjectPicker : MonoBehaviour
         {
             if (isOnObject)
             {
-                currentSelected.gameObject.GetComponent<Renderer>().material.color = Color.green;
+                //currentSelected.gameObject.GetComponent<Renderer>().material.color = Color.green;
+
             }else
             {
                 if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
