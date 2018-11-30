@@ -4,9 +4,9 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine;
 
-public class ShakeUI : MonoBehaviour
+public class ShakeWorldUI : MonoBehaviour
 {
-    RectTransform t;
+    Transform t;
 
     Vector3 startPos;
 
@@ -24,14 +24,11 @@ public class ShakeUI : MonoBehaviour
 
     void Start()
     {
-        t = GetComponent<RectTransform>();                
+        t = transform;                
     }
 
     public void GoShake()
     {
-        if (t == null)
-            t = GetComponent<RectTransform>();
-
         startPos = t.localPosition;
 
         shake = true;
@@ -43,7 +40,8 @@ public class ShakeUI : MonoBehaviour
         if (shake && shakeTime < shakeDuration)
         {
             shakeTime += Time.deltaTime;
-            t.localPosition = Random.insideUnitSphere * shakeIntensity;
+            Vector3 rndm = Random.insideUnitSphere * shakeIntensity;
+            t.localPosition = new Vector3(rndm.x, rndm.y, t.localPosition.z);
         }
         else if(shake)
         {

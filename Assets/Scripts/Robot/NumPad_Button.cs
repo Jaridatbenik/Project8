@@ -10,13 +10,11 @@ public class NumPad_Button : MonoBehaviour
     [SerializeField]
     UnityEvent pressUp;
     [SerializeField]
-    UnityEvent hover;
+    UnityEvent hover;    
 
     public void OnPressDown()
-    {
-        //Change Color
-
-        pressDown.Invoke();
+    {                
+        pressDown.Invoke();        
     }
     public void OnPressUp()
     {

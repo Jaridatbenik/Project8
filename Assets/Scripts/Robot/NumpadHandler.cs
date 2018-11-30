@@ -14,13 +14,13 @@ public class NumpadHandler : MonoBehaviour
     GameObject previewText;
 
     [SerializeField]
-    ShakeUI textShaker;
+    ShakeWorldUI textShaker;
     [SerializeField]
     string code = "1234";
 
     [SerializeField]
     Material buttonPressMat;
-    Material buttonStartMat;
+    Material buttonStartMat;   
 
     void Start()
     {
@@ -39,7 +39,7 @@ public class NumpadHandler : MonoBehaviour
             CheckAnswer();
         }
 
-        pads[padIndex - 1].GetComponent<MeshRenderer>().material = buttonStartMat;
+        ClearMat(pads[padIndex - 1].GetComponent<MeshRenderer>());
     }
 
     void CheckAnswer()
@@ -52,7 +52,7 @@ public class NumpadHandler : MonoBehaviour
 
     void Correct()
     {
-
+        print("CORRECT");
     }
 
     void InCorrect()
@@ -71,5 +71,9 @@ public class NumpadHandler : MonoBehaviour
     public void ChangeMat(MeshRenderer mr)
     {
         mr.material = buttonPressMat;
+    }
+    public void ClearMat(MeshRenderer mr)
+    {
+        mr.material = buttonStartMat;
     }
 }
