@@ -13,6 +13,9 @@ public class Snapper : MonoBehaviour {
 
     ObjectPicker pick;
 
+    [HideInInspector]
+    public Transform parentObject;
+
     public int neededSequence = 0;
 
     void Start()
@@ -21,6 +24,7 @@ public class Snapper : MonoBehaviour {
         hand = FindObjectOfType<SnapperHandler>();
         seq = FindObjectOfType<Sequensing>();
         pick = FindObjectOfType<ObjectPicker>();
+        parentObject = transform.parent;
     }
 
     void OnTriggerEnter(Collider col)
@@ -40,9 +44,9 @@ public class Snapper : MonoBehaviour {
 
     void CheckIfCorrect()
     {
-        try
-        {
-            if (col.gameObject != correctObject)
+        //try
+        //{
+            if (col.gameObject != correctObject || neededSequence != seq.currentBodyPart)
             {
                 hand.SpawnWrongParticles(transform.position);
                 hand.DestroyParticle();
@@ -52,7 +56,16 @@ public class Snapper : MonoBehaviour {
                 seq.UpCount();
                 pick.ReleaseObject();
                 hand.SpawnCorrectParticles(transform.position);
+                col.transform.SetParent(parentObject);
+                for(int i = 0; i < pick.transform.childCount; i++)
+                {
+                    if(pick.transform.GetChild(i).GetComponent<PickableObject>() != null)
+                    {
+                        Destroy(pick.transform.GetChild(i).GetComponent<PickableObject>());
+                    }
+                }
                 col.transform.localPosition = Vector3.zero;
+                col.transform.rotation = new Quaternion(0, 0, 0, 0);
                 Destroy(col.GetComponent<Rigidbody>());
                 Destroy(col);
                 Destroy(GetComponent<BoxCollider>());
@@ -60,10 +73,10 @@ public class Snapper : MonoBehaviour {
                 hand.DestroyParticle();
             }
             Debug.Log("Finished");
-        }catch
-        {
-            Debug.Log("nothing");
-        }
+       // }catch
+        //{
+         //   Debug.Log("nothing");
+        //}
     }
 
     void Canceled()

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SteamVR_LaserPointer))]
+//[RequireComponent(typeof(SteamVR_LaserPointer))]
 public class ObjectPicker : MonoBehaviour
 {
-    SteamVR_LaserPointer pointer;
+    public SteamVR_LaserPointer pointer;
 
     [HideInInspector]
     public GameObject currentSelected;
@@ -16,9 +16,11 @@ public class ObjectPicker : MonoBehaviour
 
     public Transform parenter;
 
+    float cooldown = 0;
+
     void Start()
     {
-        pointer = GetComponent<SteamVR_LaserPointer>();
+        //pointer = GetComponent<SteamVR_LaserPointer>();
         pointer.PointerIn -= HandlePointerIn;
         pointer.PointerIn += HandlePointerIn;
         pointer.PointerOut -= HandlePointerOut;
@@ -27,6 +29,11 @@ public class ObjectPicker : MonoBehaviour
 
     void Update()
     {
+        if(cooldown < 2)
+        {
+            cooldown++;
+        }
+
         if(currentSelected != null)
         {
             if (isOnObject)
@@ -41,9 +48,11 @@ public class ObjectPicker : MonoBehaviour
                 }
             }
 
-            if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
+
+            if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown() && cooldown > 1)
             {
                 PickupObject();
+                cooldown = 0;
                 /*
                 currentSelected.SetActive(false);
                 currentTarget.referenceObject.SetActive(true);
@@ -81,7 +90,7 @@ public class ObjectPicker : MonoBehaviour
     {
         try
         {
-            currentSelected.transform.SetParent(null);
+            currentSelected.transform.SetParent(FindObjectOfType<Snapper>().parentObject);
             pointer.enabled = true;
         }
         catch { }
