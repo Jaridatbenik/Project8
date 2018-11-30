@@ -67,8 +67,8 @@ public class Snapper : MonoBehaviour
             }
             col.transform.localPosition = Vector3.zero;
             col.transform.rotation = new Quaternion(0, 0, 0, 0);
-            Destroy(col.gameObject.GetComponent<PickableObject>());
-            Destroy(col.gameObject.GetComponent<BoxCollider>());
+            Destroy(col.transform.GetChild(0).gameObject.GetComponent<PickableObject>());
+            Destroy(col.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
             Destroy(col.GetComponent<Rigidbody>());
             Destroy(col);
             Destroy(GetComponent<BoxCollider>());
