@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PickerType
+{
+    PickableObject,
+    Lever
+}
+
 //[RequireComponent(typeof(SteamVR_LaserPointer))]
 public class ObjectPicker : MonoBehaviour
 {
@@ -13,8 +19,12 @@ public class ObjectPicker : MonoBehaviour
     public PickableObject currentTarget;
     [HideInInspector]
     public bool isOnObject = false;
+    [HideInInspector]
+    public LeverHandler lever;
 
     public Transform parenter;
+
+    PickerType type = PickerType.PickableObject;
 
     float cooldown = 0;
 
@@ -51,7 +61,13 @@ public class ObjectPicker : MonoBehaviour
 
             if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown() && cooldown > 1)
             {
-                PickupObject();
+                if (type == PickerType.PickableObject)
+                {
+                    PickupObject();
+                }else if(type == PickerType.Lever)
+                {
+                    lever.SwitchLever();
+                }
                 cooldown = 0;
                 /*
                 currentSelected.SetActive(false);
@@ -90,7 +106,9 @@ public class ObjectPicker : MonoBehaviour
     {
         try
         {
-            currentSelected.transform.SetParent(FindObjectOfType<Snapper>().parentObject);
+            currentSelected.transform.SetParent(null);
+            //FindObjectOfType<Snapper>().parentObject
+
             pointer.enabled = true;
         }
         catch { }
@@ -100,9 +118,15 @@ public class ObjectPicker : MonoBehaviour
     {
         if (e.target.gameObject.GetComponent<PickableObject>() != null)
         {
+            type = PickerType.PickableObject;
             currentSelected = e.target.GetComponent<PickableObject>().moveParent;
             currentTarget = e.target.gameObject.GetComponent<PickableObject>();
             isOnObject = true;
+        }else if(e.target.gameObject.GetComponent<LeverHandler>() != null)
+        {
+            type = PickerType.Lever;
+            isOnObject = true;
+            lever = e.target.gameObject.GetComponent<LeverHandler>();
         }
     }
 
