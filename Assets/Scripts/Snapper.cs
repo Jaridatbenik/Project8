@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Snapper : MonoBehaviour {
+public class Snapper : MonoBehaviour
+{
 
     public GameObject correctObject;
     CircleHandler circleHand;
@@ -40,42 +41,44 @@ public class Snapper : MonoBehaviour {
         this.col = null;
         circleHand.CancelCircle();
     }
-    
+
 
     void CheckIfCorrect()
     {
         //try
         //{
-            if (col.gameObject != correctObject || neededSequence != seq.currentBodyPart)
+        if (col.gameObject != correctObject || neededSequence != seq.currentBodyPart)
+        {
+            hand.SpawnWrongParticles(transform.position);
+            hand.DestroyParticle();
+        }
+        else
+        {
+            seq.UpCount();
+            pick.ReleaseObject();
+            hand.SpawnCorrectParticles(transform.position);
+            col.transform.SetParent(parentObject);
+            for (int i = 0; i < pick.transform.childCount; i++)
             {
-                hand.SpawnWrongParticles(transform.position);
-                hand.DestroyParticle();
-            }
-            else
-            {
-                seq.UpCount();
-                pick.ReleaseObject();
-                hand.SpawnCorrectParticles(transform.position);
-                col.transform.SetParent(parentObject);
-                for(int i = 0; i < pick.transform.childCount; i++)
+                if (pick.transform.GetChild(i).GetComponent<PickableObject>() != null)
                 {
-                    if(pick.transform.GetChild(i).GetComponent<PickableObject>() != null)
-                    {
-                        Destroy(pick.transform.GetChild(i).GetComponent<PickableObject>());
-                    }
+                    Destroy(pick.transform.GetChild(i).GetComponent<PickableObject>());
                 }
-                col.transform.localPosition = Vector3.zero;
-                col.transform.rotation = new Quaternion(0, 0, 0, 0);
-                Destroy(col.GetComponent<Rigidbody>());
-                Destroy(col);
-                Destroy(GetComponent<BoxCollider>());
-                Destroy(this);
-                hand.DestroyParticle();
             }
-            Debug.Log("Finished");
-       // }catch
+            col.transform.localPosition = Vector3.zero;
+            col.transform.rotation = new Quaternion(0, 0, 0, 0);
+            Destroy(col.gameObject.GetComponent<PickableObject>());
+            Destroy(col.gameObject.GetComponent<BoxCollider>());
+            Destroy(col.GetComponent<Rigidbody>());
+            Destroy(col);
+            Destroy(GetComponent<BoxCollider>());
+            Destroy(this);
+            hand.DestroyParticle();
+        }
+        Debug.Log("Finished");
+        // }catch
         //{
-         //   Debug.Log("nothing");
+        //   Debug.Log("nothing");
         //}
     }
 
