@@ -6,22 +6,27 @@ using UnityEngine;
 public class NumpadHandler : MonoBehaviour
 {
     const int outputLimit = 4;
-    List<GameObject> pads = new List<GameObject>();
     [SerializeField]
-    TextMeshProUGUI output;
+    List<GameObject> pads = new List<GameObject>(); //Assign em all in editor
+    [SerializeField]
+    TextMeshPro output;
     [SerializeField]
     GameObject previewText;
 
-    [SerializeField]ShakeUI textShaker;
+    [SerializeField]
+    ShakeUI textShaker;
+    [SerializeField]
+    string code = "1234";
 
-    [SerializeField] string code = "1234";
+    [SerializeField]
+    Material buttonPressMat;
+    Material buttonStartMat;
 
     void Start()
     {
-        for(int i = 0; i < transform.childCount; i++)
-        {
-            pads.Add(transform.GetChild(i).gameObject);
-        }         
+        //They all start with the same materials so the first one should be fine.
+        buttonStartMat = pads[0].GetComponent<MeshRenderer>().material;
+        ClearText();        
     }
 
     public void ButtonPressed(int padIndex)
@@ -33,12 +38,14 @@ public class NumpadHandler : MonoBehaviour
         {
             CheckAnswer();
         }
+
+        pads[padIndex - 1].GetComponent<MeshRenderer>().material = buttonStartMat;
     }
 
     void CheckAnswer()
     {
-        if (output.text == code)        
-            Correct();        
+        if (output.text == code)
+            Correct();
         else
             InCorrect();
     }
@@ -58,5 +65,11 @@ public class NumpadHandler : MonoBehaviour
     {
         output.text = "";
         previewText.SetActive(true);
+    }
+
+
+    public void ChangeMat(MeshRenderer mr)
+    {
+        mr.material = buttonPressMat;
     }
 }
