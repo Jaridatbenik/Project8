@@ -35,6 +35,8 @@ public class ObjectPicker : MonoBehaviour
         pointer.PointerIn += HandlePointerIn;
         pointer.PointerOut -= HandlePointerOut;
         pointer.PointerOut += HandlePointerOut;
+
+        ReleaseObject();
     }
 
     void Update()

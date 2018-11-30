@@ -22,7 +22,7 @@ public class CircleHandler : MonoBehaviour
     bool inTimer = false;
 
     //Temp-------------------
-    public GameObject cube;
+   // public GameObject cube;
     //End Temp---------------
 
     public void SpawnCircle(float timeToShow, CircleTypes type, Action subscribeToThisCompletionEvent, Action subscribeToThisCancelEvent)
@@ -53,16 +53,6 @@ public class CircleHandler : MonoBehaviour
     void Update()
     {
 
-        //Temp---------------------------
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CancelCircle();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            SpawnCircle(0.2f, CircleTypes.ObjectSelection, cube, TestMethod, TestMethod);
-        }
-        //-------------------------------
 
         if (inTimer)
         {
@@ -75,7 +65,7 @@ public class CircleHandler : MonoBehaviour
                     image.rectTransform.position = new Vector2(Screen.width / 2, Screen.height / 2);
                 }else
                 {
-                    image.rectTransform.position = Camera.main.WorldToScreenPoint(cube.transform.position);
+                    //image.rectTransform.position = Camera.main.WorldToScreenPoint(cube.transform.position);
                 }
             }else
             {
