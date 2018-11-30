@@ -16,5 +16,13 @@ public class Sequensing : MonoBehaviour {
         currentBodyPart+= input;
     }
 
+    void Update()
+    {
+        if(currentBodyPart >= 4)
+        {
+
+        }
+    }
+
 
 }
