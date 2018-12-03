@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Snapper : MonoBehaviour {
+public class Snapper : MonoBehaviour
+{
 
     public GameObject correctObject;
     CircleHandler circleHand;
@@ -13,6 +14,9 @@ public class Snapper : MonoBehaviour {
 
     ObjectPicker pick;
 
+    [HideInInspector]
+    public Transform parentObject;
+
     public int neededSequence = 0;
 
     void Start()
@@ -21,6 +25,7 @@ public class Snapper : MonoBehaviour {
         hand = FindObjectOfType<SnapperHandler>();
         seq = FindObjectOfType<Sequensing>();
         pick = FindObjectOfType<ObjectPicker>();
+        parentObject = transform.parent;
     }
 
     void OnTriggerEnter(Collider col)
@@ -36,34 +41,45 @@ public class Snapper : MonoBehaviour {
         this.col = null;
         circleHand.CancelCircle();
     }
-    
+
 
     void CheckIfCorrect()
     {
-        try
+        //try
+        //{
+        if (col.gameObject != correctObject || neededSequence != seq.currentBodyPart)
         {
-            if (col.gameObject != correctObject)
-            {
-                hand.SpawnWrongParticles(transform.position);
-                hand.DestroyParticle();
-            }
-            else
-            {
-                seq.UpCount();
-                pick.ReleaseObject();
-                hand.SpawnCorrectParticles(transform.position);
-                col.transform.localPosition = Vector3.zero;
-                Destroy(col.GetComponent<Rigidbody>());
-                Destroy(col);
-                Destroy(GetComponent<BoxCollider>());
-                Destroy(this);
-                hand.DestroyParticle();
-            }
-            Debug.Log("Finished");
-        }catch
-        {
-            Debug.Log("nothing");
+            hand.SpawnWrongParticles(transform.position);
+            hand.DestroyParticle();
         }
+        else
+        {
+            seq.UpCount();
+            pick.ReleaseObject();
+            hand.SpawnCorrectParticles(transform.position);
+            col.transform.SetParent(parentObject);
+            for (int i = 0; i < pick.transform.childCount; i++)
+            {
+                if (pick.transform.GetChild(i).GetComponent<PickableObject>() != null)
+                {
+                    Destroy(pick.transform.GetChild(i).GetComponent<PickableObject>());
+                }
+            }
+            col.transform.localPosition = Vector3.zero;
+            col.transform.rotation = new Quaternion(0, 0, 0, 0);
+            Destroy(col.transform.GetChild(0).gameObject.GetComponent<PickableObject>());
+            Destroy(col.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
+            Destroy(col.GetComponent<Rigidbody>());
+            Destroy(col);
+            Destroy(GetComponent<BoxCollider>());
+            Destroy(this);
+            hand.DestroyParticle();
+        }
+        Debug.Log("Finished");
+        // }catch
+        //{
+        //   Debug.Log("nothing");
+        //}
     }
 
     void Canceled()

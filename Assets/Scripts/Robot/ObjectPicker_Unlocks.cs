@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PickerType
-{
-    PickableObject,
-    Lever
-}
-
 //[RequireComponent(typeof(SteamVR_LaserPointer))]
-public class ObjectPicker : MonoBehaviour
+public class ObjectPicker_Unlocks : MonoBehaviour
 {
     public SteamVR_LaserPointer pointer;
 
@@ -19,12 +13,10 @@ public class ObjectPicker : MonoBehaviour
     public PickableObject currentTarget;
     [HideInInspector]
     public bool isOnObject = false;
-    [HideInInspector]
-    public LeverHandler lever;
 
     public Transform parenter;
 
-    PickerType type = PickerType.PickableObject;
+    NumpadHandler padHandler;
 
     float cooldown = 0;
 
@@ -36,26 +28,28 @@ public class ObjectPicker : MonoBehaviour
         pointer.PointerOut -= HandlePointerOut;
         pointer.PointerOut += HandlePointerOut;
 
-        ReleaseObject();
+        padHandler = FindObjectOfType<NumpadHandler>();
     }
 
     void Update()
     {
-        if(cooldown < 2)
+        if (cooldown < 2)
         {
             cooldown++;
         }
 
-        if(currentSelected != null)
+        if (currentSelected != null)
         {
             if (isOnObject)
             {
                 //currentSelected.gameObject.GetComponent<Renderer>().material.color = Color.green;
 
-            }else
+            }
+            else
             {
                 if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
                 {
+                    currentSelected.GetComponent<NumPad_Button>().OnPressDown();
                     return;
                 }
             }
@@ -63,14 +57,10 @@ public class ObjectPicker : MonoBehaviour
 
             if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown() && cooldown > 1)
             {
-                if (type == PickerType.PickableObject)
-                {
-                    PickupObject();
-                }else if(type == PickerType.Lever)
-                {
-                    lever.SwitchLever();
-                }
-                cooldown = 0;
+                // PickupObject();
+
+
+                //cooldown = 0;
                 /*
                 currentSelected.SetActive(false);
                 currentTarget.referenceObject.SetActive(true);
@@ -81,7 +71,9 @@ public class ObjectPicker : MonoBehaviour
             }
             if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
             {
-                ReleaseObject();
+                //ReleaseObject();                                
+                currentSelected.GetComponent<NumPad_Button>().OnPressUp();
+
                 /*
                 currentSelected.SetActive(true);
                 currentTarget.referenceObject.SetActive(false);
@@ -93,47 +85,44 @@ public class ObjectPicker : MonoBehaviour
         }
     }
 
-    void PickupObject()
-    {
-        try
-        {
-            currentSelected.transform.SetParent(parenter);
-            currentSelected.transform.localPosition = new Vector3(0, 0, 0.2f) + currentSelected.GetComponent<PickableObject>().offset;
-            pointer.enabled = false;
-        }
-        catch { }
-    }
+    //void PickupObject()
+    //{
+    //    try
+    //    {
+    //        currentSelected.transform.SetParent(parenter);
+    //        currentSelected.transform.localPosition = new Vector3(0, 0, 0.2f) + currentSelected.GetComponent<PickableObject>().offset;
+    //        pointer.enabled = false;
+    //    }
+    //    catch { }
+    //}
 
-    public void ReleaseObject()
-    {
-        try
-        {
-            currentSelected.transform.SetParent(null);
-            //FindObjectOfType<Snapper>().parentObject
-
-            pointer.enabled = true;
-        }
-        catch { }
-    }
+    //public void ReleaseObject()
+    //{
+    //    try
+    //    {
+    //        currentSelected.transform.SetParent(FindObjectOfType<Snapper>().parentObject);
+    //        pointer.enabled = true;
+    //    }
+    //    catch { }
+    //}
 
     private void HandlePointerIn(object sender, PointerEventArgs e)
     {
-        if (e.target.gameObject.GetComponent<PickableObject>() != null)
-        {
-            type = PickerType.PickableObject;
-            currentSelected = e.target.GetComponent<PickableObject>().moveParent;
-            currentTarget = e.target.gameObject.GetComponent<PickableObject>();
-            isOnObject = true;
-        }else if(e.target.gameObject.GetComponent<LeverHandler>() != null)
-        {
-            type = PickerType.Lever;
-            isOnObject = true;
-            lever = e.target.gameObject.GetComponent<LeverHandler>();
-        }
+        //if (e.target.gameObject.GetComponent<PickableObject>() != null)
+        //{
+        //    currentSelected = e.target.GetComponent<PickableObject>().moveParent;
+        //    currentTarget = e.target.gameObject.GetComponent<PickableObject>();
+        //    isOnObject = true;
+        //}
+        currentSelected = e.target.gameObject;
     }
 
     private void HandlePointerOut(object sender, PointerEventArgs e)
     {
-        isOnObject = false;
+        //isOnObject = false;
+        if (currentSelected.GetComponent<NumPad_Button>())
+            padHandler.ClearMat(currentSelected.GetComponent<MeshRenderer>());
+
+        currentSelected = null;
     }
 }
