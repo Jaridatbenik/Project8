@@ -609,7 +609,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  code: tard
+  code: 2425
   correctCallDelay: 0.45
 --- !u!114 &114709516072622334
 MonoBehaviour:

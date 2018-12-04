@@ -1,0 +1,15 @@
+<Regel1>:Welkom bij de StressTest vragenlijst
+<Regel2>:Er komen heel wat vragen, so be prepared!
+(Vraag1):Vraag 1! Waar leven de penguings? @Antartica @Noord-Pool @Amerika
+<Vraag1Antwoord1>:Dit is correct, ik ben trots op je!
+<Vraag1Antwoord2>:Dit is fout, ze leven op Antartica
+<Vraag1Antwoord3>:Euh nee, dit zeker niet, ze leven op Antartica
+(Vraag2):Vraag 2! Van welk metaal word staal gemaakt? @Koper @Zilver @Ijzer
+<Vraag2Antwoord1>:Nee het word van Ijzer gemaakt.
+<Vraag2Antwoord2>:De kleur is hetzelfde maar het word van ijzer gemaakt.
+<Vraag2Antwoord3>:Correct, staal word van ijzer gemaakt.
+(Vraag3):Vraag 3! Wat zijn de eerste 6 letters op een nederlands toetsenbord? @Ascii @Qwerty @Awerty
+<Vraag3Antwoord1>:Dit is niet correct, het juiste antwoord was Qwerty
+<Vraag3Antwoord2>:Goedzo dit is correct
+<Vraag3Antwoord3>:Dit is niet correct, het juiste antwoord was Qwerty
+<Regel3>:Dit waren de vragen voor nu, DOEI!

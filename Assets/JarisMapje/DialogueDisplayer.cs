@@ -45,6 +45,11 @@ public class DialogueDisplayer : MonoBehaviour {
         {
             ReceivedInput();
         }
+
+        if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
+        {
+            ReceivedInput();
+        }
     }
 
 

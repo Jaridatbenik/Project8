@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NumpadHandler : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class NumpadHandler : MonoBehaviour
 
     [SerializeField]
     Material buttonPressMat;
-    Material buttonStartMat;   
+    Material buttonStartMat;
+
+    public Text text;
 
     void Start()
     {
@@ -53,6 +56,8 @@ public class NumpadHandler : MonoBehaviour
     void Correct()
     {
         print("CORRECT");
+        DialogReader.InitScenario("Code");
+        text.text = "De code is 1337";
     }
 
     void InCorrect()
