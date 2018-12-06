@@ -54,7 +54,7 @@ public class SubMenuButton : MonoBehaviour
             }
             catch
             {
-                Debug.LogError("Either SubMenuName in SubMenuButton-script doesn't exist, or you forgot to add the SubMenu-script.");
+                Debug.LogError("Either SubMenuName in '" + name +  "' SubMenuButton-script doesn't exist, or you forgot to add the SubMenu-script.");
             }
             
 
