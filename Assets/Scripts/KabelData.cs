@@ -23,7 +23,7 @@ public class KabelData : MonoBehaviour {
 
     LineRenderer line;
 
-    static Dictionary<KabelKleur, Color> kabelKleurtjes = new Dictionary<KabelKleur, Color>() { { KabelKleur.Rood, Color.red }, { KabelKleur.Groen, Color.green }, { KabelKleur.Blauw, Color.blue } };
+    public static Dictionary<KabelKleur, Color> kabelKleurtjes = new Dictionary<KabelKleur, Color>() { { KabelKleur.Rood, Color.red }, { KabelKleur.Groen, Color.green }, { KabelKleur.Blauw, Color.blue } };
 
     void Start()
     {
@@ -40,6 +40,8 @@ public class KabelData : MonoBehaviour {
             SpoelHandler newEndSpoel = endObj.AddComponent<SpoelHandler>();
             newStartSpoel.transform.position = startPoint.transform.position;
             newEndSpoel.transform.position = endPoint.transform.position;
+            startPoint.DetatchKabel();
+            endPoint.DetatchKabel();
             startPoint = newStartSpoel;
             endPoint = newEndSpoel;
             inRemoveMode = true;
@@ -54,8 +56,8 @@ public class KabelData : MonoBehaviour {
 
             if(removeModeCounter <= 3)
             {
-                startPoint.transform.position -= new Vector3(0, 1f * Random.Range(0.8f, 2f) * Time.deltaTime, 0);
-                endPoint.transform.position -= new Vector3(0, 1f * Random.Range(0.8f, 2f) * Time.deltaTime, 0);
+                startPoint.transform.position -= new Vector3(0, 1f * Random.Range(0.8f, 6f) * Time.deltaTime, 0);
+                endPoint.transform.position -= new Vector3(0, 1f * Random.Range(0.8f, 6f) * Time.deltaTime, 0);
                 line.SetPositions(
                     new Vector3[2] {
                 startPoint.customTransform != null ?

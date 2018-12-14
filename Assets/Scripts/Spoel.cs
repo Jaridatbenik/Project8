@@ -24,8 +24,12 @@ public class Spoel : MonoBehaviour {
 
     public void AttachKabelToPoint(SpoelHandler eind)
     {
-        kabelData.endPoint = eind;
-        kabelData.attachedSpoel = null;
+        try
+        {
+            kabelData.endPoint = eind;
+            kabelData.attachedSpoel = null;
+        }
+        catch { }
 
     }
 }
