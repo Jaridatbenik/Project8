@@ -36,3 +36,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Particles/WrongSnap.meta
+Assets/Animations.meta
+Assets/Particles.meta
