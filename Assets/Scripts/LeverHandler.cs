@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class LeverHandler : MonoBehaviour
 {
-    Animator lever;
     public GameObject robot;
     int num = 2;
 
+    public GameObject pointA;
+    public GameObject pointB;
+    public GameObject leverObject;
+    bool atPointA = true;
+    bool inSwitch = false;
+
+    public float speed = 2f;
+
     void Start()
     {
-        lever = GetComponent<Animator>();
+
     }
 
     public void SwitchLever()
     {
-        num = num == 1 ? 2 : 1;
-        lever.SetTrigger("Play" + num);
-        //lever.ResetTrigger("Play" + num);
-        //robot.transform.rotation = num == 1 ? new Quaternion(0, 90, 0, 0) : new Quaternion(0, -90, 0, 0);
-
-        if(num == 1)
-        {
-            robot.transform.rotation = Quaternion.Euler(0, 90, 0);
-        }else if(num == 2)
-        {
-            robot.transform.rotation = Quaternion.Euler(0, -90, 0);
-        }
+        inSwitch = true;
     }
 
     void Update()
@@ -34,6 +30,28 @@ public class LeverHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             SwitchLever();
+        }
+
+        if (inSwitch)
+        {
+            if (atPointA)
+            {
+                leverObject.transform.position = Vector3.Lerp(leverObject.transform.position, pointB.transform.position, Time.deltaTime * speed);
+                if(Vector3.Distance(leverObject.transform.position, pointB.transform.position) < 0.02f)
+                {
+                    atPointA = false;
+                    inSwitch = false;
+                }
+            }
+            else
+            {
+                leverObject.transform.position = Vector3.Lerp(leverObject.transform.position, pointA.transform.position, Time.deltaTime * speed);
+                if (Vector3.Distance(leverObject.transform.position, pointA.transform.position) < 0.02f)
+                {
+                    atPointA = true;
+                    inSwitch = false;
+                }
+            }
         }
     }
 
