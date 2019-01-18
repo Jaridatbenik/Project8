@@ -6,6 +6,13 @@ public class Snapper : MonoBehaviour
 {
 
     public GameObject correctObject;
+
+    /// <summary>
+    /// If left blank or = null it will not snap to a selected object but just to something, 
+    /// I don't know its been 4 weeks since I looked at this shit
+    /// </summary>
+    public Transform snapToThis;
+
     CircleHandler circleHand;
     SnapperHandler hand;
     Sequensing seq;
@@ -13,6 +20,8 @@ public class Snapper : MonoBehaviour
     Collider col;
 
     ObjectPicker pick;
+
+    public List<Collider> ignoreThisIfNeedid = new List<Collider>();
 
     [HideInInspector]
     public Transform parentObject;
@@ -26,6 +35,11 @@ public class Snapper : MonoBehaviour
         seq = FindObjectOfType<Sequensing>();
         pick = FindObjectOfType<ObjectPicker>();
         parentObject = transform.parent;
+
+        for (int i = 0; i < ignoreThisIfNeedid.Count; i++)
+        {
+            Physics.IgnoreCollision(ignoreThisIfNeedid[i], GetComponent<BoxCollider>());
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -57,7 +71,7 @@ public class Snapper : MonoBehaviour
             seq.UpCount();
             pick.ReleaseObject();
             hand.SpawnCorrectParticles(transform.position);
-            col.transform.SetParent(parentObject);
+            col.transform.SetParent(snapToThis != null ? snapToThis : parentObject);
             for (int i = 0; i < pick.transform.childCount; i++)
             {
                 if (pick.transform.GetChild(i).GetComponent<PickableObject>() != null)
@@ -75,7 +89,7 @@ public class Snapper : MonoBehaviour
             Destroy(this);
             hand.DestroyParticle();
         }
-        Debug.Log("Finished");
+        Debug.Log("Finished :" + this.name);
         // }catch
         //{
         //   Debug.Log("nothing");
