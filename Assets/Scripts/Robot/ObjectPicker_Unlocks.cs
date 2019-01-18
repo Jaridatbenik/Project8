@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //[RequireComponent(typeof(SteamVR_LaserPointer))]
 public class ObjectPicker_Unlocks : MonoBehaviour
@@ -15,6 +13,9 @@ public class ObjectPicker_Unlocks : MonoBehaviour
     public bool isOnObject = false;
 
     public Transform parenter;
+
+    PickerType type = PickerType.PickableObject;
+    LeverHandler lever;
 
     NumpadHandler padHandler;
 
@@ -47,12 +48,31 @@ public class ObjectPicker_Unlocks : MonoBehaviour
             }
             else
             {
+                /*
                 if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
                 {
-                    currentSelected.GetComponent<NumPad_Button>().OnPressDown();
                     return;
                 }
+                */
             }
+            if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
+            {
+
+                if (type != PickerType.Lever)
+                {
+                    try
+                    {
+                        currentSelected.GetComponent<NumPad_Button>().OnPressDown();
+                    }
+                    catch { }
+                }
+                else
+                {
+                    lever.SwitchLever();
+                }
+                return;
+            }
+
 
 
             if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown() && cooldown > 1)
@@ -71,8 +91,12 @@ public class ObjectPicker_Unlocks : MonoBehaviour
             }
             if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
             {
-                //ReleaseObject();                                
-                currentSelected.GetComponent<NumPad_Button>().OnPressUp();
+                //ReleaseObject();                            
+                try
+                {
+                    currentSelected.GetComponent<NumPad_Button>().OnPressUp();
+                }
+                catch { }
 
                 /*
                 currentSelected.SetActive(true);
@@ -114,6 +138,17 @@ public class ObjectPicker_Unlocks : MonoBehaviour
         //    currentTarget = e.target.gameObject.GetComponent<PickableObject>();
         //    isOnObject = true;
         //}
+        if (e.target.gameObject.GetComponent<LeverHandler>() != null)
+        {
+            type = PickerType.Lever;
+            isOnObject = true;
+            lever = e.target.gameObject.GetComponent<LeverHandler>();
+        }
+        else
+        {
+            type = PickerType.PickableObject;
+        }
+
         currentSelected = e.target.gameObject;
     }
 
@@ -122,6 +157,11 @@ public class ObjectPicker_Unlocks : MonoBehaviour
         //isOnObject = false;
         if (currentSelected.GetComponent<NumPad_Button>())
             padHandler.ClearMat(currentSelected.GetComponent<MeshRenderer>());
+
+        if (lever != null)
+        {
+            lever = null;
+        }
 
         currentSelected = null;
     }

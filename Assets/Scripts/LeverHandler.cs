@@ -37,6 +37,7 @@ public class LeverHandler : MonoBehaviour
             if (atPointA)
             {
                 leverObject.transform.position = Vector3.Lerp(leverObject.transform.position, pointB.transform.position, Time.deltaTime * speed);
+                robot.transform.rotation = Quaternion.LerpUnclamped(robot.transform.rotation, Quaternion.Euler(0, -90, 0), Time.deltaTime * (speed * 2.1f));
                 if(Vector3.Distance(leverObject.transform.position, pointB.transform.position) < 0.02f)
                 {
                     atPointA = false;
@@ -46,6 +47,7 @@ public class LeverHandler : MonoBehaviour
             else
             {
                 leverObject.transform.position = Vector3.Lerp(leverObject.transform.position, pointA.transform.position, Time.deltaTime * speed);
+                robot.transform.rotation = Quaternion.LerpUnclamped(robot.transform.rotation, Quaternion.Euler(0, 90, 0), Time.deltaTime * (speed * 2.1f));
                 if (Vector3.Distance(leverObject.transform.position, pointA.transform.position) < 0.02f)
                 {
                     atPointA = true;
