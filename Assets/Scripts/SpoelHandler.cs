@@ -11,6 +11,19 @@ public class SpoelHandler : MonoBehaviour
     public bool canBeAStartingPoint = true;
     public bool canBeEndPoint = true;
 
+    public GameObject spoelColliders;
+
+    void Start()
+    {
+        try
+        {
+            for (int i = 0; i < spoelColliders.GetComponents<Collider>().Length; i++)
+            {
+                Physics.IgnoreCollision(spoelColliders.GetComponents<Collider>()[i], GetComponent<Collider>());
+            }
+        }catch { }
+    }
+
     void Update()
     {
         try

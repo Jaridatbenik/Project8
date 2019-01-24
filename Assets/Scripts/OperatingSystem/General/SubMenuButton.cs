@@ -1,23 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SubMenuButton : MonoBehaviour
 {    
     RectTransform t;
 
-    [Header("Example: 'Settings'. No 'SubMenu/' needed.")]
+    [Header("Example: 'Settings'. No 'SubMenu/' needed.")]      //The code will add the "SubMenu/" because submenu's should be in that folder.
     public string submenuName;
-    SubMenu submenu;
+    SubMenu submenu;                                            //This will be the instantiated submenu.
     [HideInInspector]public Transform submenuCanvas;
-    public bool isParent = false;
-
-    //[Header("Darkened image. Use these variables for exceptions (like menu's inside menu's)")]
-    //public Image darkenedImage;     //Assign in Editor.    
-    //[Header("If true, the spawned Menu's Quit-Button will call the same darkenedImage-Toggle.")]
-    //public bool setSpawnedMenuQuitButtonImageToMine = false;        
-    
+    public bool isParent = false;                               //In case this class is part of a Quit-Button or something like that. (You can ignore it while by leaving it false).
 
     void Awake()
     {
@@ -27,9 +19,6 @@ public class SubMenuButton : MonoBehaviour
         {
             Debug.LogError("Can't find 'SubMenuCanvas'.");
         }
-
-        //if(!assignImageManually)
-            //darkenedImage = submenuCanvas.GetChild(1).GetComponent<Image>();
         
         t = GetComponent<RectTransform>();
 

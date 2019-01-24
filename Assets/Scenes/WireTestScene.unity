@@ -113,6 +113,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &68975492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68975493}
+  m_Layer: 0
+  m_Name: RopePointA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &68975493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 68975492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.849999, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &69763699
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +177,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 0
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &69763701
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,7 +191,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &69763702
 BoxCollider:
@@ -225,11 +254,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 69763699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.866, z: -8.07}
+  m_LocalPosition: {x: -12.879999, y: 0.866, z: -8.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96190665
 GameObject:
@@ -256,10 +285,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 96190665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.73, z: 0.11}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -12.63, y: 0.91, z: 0.01}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.25}
   m_Children:
   - {fileID: 1305395378}
+  - {fileID: 591326384}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -341,6 +371,7 @@ MonoBehaviour:
   kleurtje: 1
   canBeAStartingPoint: 1
   canBeEndPoint: 0
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &135195913
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -354,7 +385,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &135195914
 BoxCollider:
@@ -417,11 +448,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 135195911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.13, y: 0.866, z: -5.057}
+  m_LocalPosition: {x: -16.98, y: 0.866, z: -5.057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &326333089
 GameObject:
@@ -494,7 +525,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 326333089}
   m_LocalRotation: {x: 0.22953328, y: -0.65481234, z: 0.21910745, w: 0.68594986}
-  m_LocalPosition: {x: 2.2, y: 2.7, z: -0.91}
+  m_LocalPosition: {x: -10.65, y: 2.7, z: -0.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -536,6 +567,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &389099625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -549,7 +581,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &389099626
 BoxCollider:
@@ -612,11 +644,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 389099623}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.032917976, y: 4.19, z: 6.9919543}
+  m_LocalPosition: {x: -12.882917, y: 4.19, z: 6.9919543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &442074476
 GameObject:
@@ -654,6 +686,7 @@ MonoBehaviour:
   kleurtje: 1
   canBeAStartingPoint: 0
   canBeEndPoint: 0
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &442074478
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -667,7 +700,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &442074479
 BoxCollider:
@@ -730,11 +763,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 442074476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.029999971, y: 0.866, z: -5.057}
+  m_LocalPosition: {x: -12.879999, y: 0.866, z: -5.057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &490807607
 GameObject:
@@ -772,6 +805,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 0
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &490807609
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -785,7 +819,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &490807610
 BoxCollider:
@@ -848,158 +882,134 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 490807607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.13, y: 0.866, z: -8.07}
+  m_LocalPosition: {x: -16.98, y: 0.866, z: -8.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &505690614
+--- !u!1 &591326383
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 505690615}
+  - component: {fileID: 591326384}
+  - component: {fileID: 591326390}
+  - component: {fileID: 591326389}
+  - component: {fileID: 591326388}
+  - component: {fileID: 591326387}
+  - component: {fileID: 591326386}
+  - component: {fileID: 591326385}
+  - component: {fileID: 591326391}
   m_Layer: 0
-  m_Name: RopePointB
+  m_Name: Spoelcolliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &505690615
+--- !u!4 &591326384
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 505690614}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.08, y: 1.81, z: 0}
+  m_GameObject: {fileID: 591326383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 96190666}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &607267382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 607267388}
-  - component: {fileID: 607267387}
-  - component: {fileID: 607267386}
-  - component: {fileID: 607267385}
-  - component: {fileID: 607267384}
-  - component: {fileID: 607267383}
-  m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &607267383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607267382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e3cd51581742704dac9d4352526df37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 0}
-  customTransform: {fileID: 0}
-  kleurtje: 2
-  canBeAStartingPoint: 1
-  canBeEndPoint: 1
---- !u!54 &607267384
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607267382}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &607267385
+--- !u!65 &591326385
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607267382}
+  m_GameObject: {fileID: 591326383}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &607267386
-MeshRenderer:
+  m_Size: {x: 0.46950626, y: 0.063531995, z: 0.9377072}
+  m_Center: {x: -0.0031285286, y: -0.1901353, z: -0.031146407}
+--- !u!65 &591326386
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607267382}
+  m_GameObject: {fileID: 591326383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &607267387
-MeshFilter:
+  serializedVersion: 2
+  m_Size: {x: 0.46950626, y: 0.059823275, z: 0.9377072}
+  m_Center: {x: -0.0031285286, y: 0.19937515, z: -0.031146407}
+--- !u!65 &591326387
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607267382}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &607267388
-Transform:
+  m_GameObject: {fileID: 591326383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.048563004, y: 0.4509722, z: 0.94062924}
+  m_Center: {x: -0.21360016, y: 0.0038006902, z: -0.029685378}
+--- !u!65 &591326388
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607267382}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.866, z: 1.49}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 591326383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.056123734, y: 0.4509722, z: 0.93200135}
+  m_Center: {x: 0.20356274, y: 0.0038006902, z: -0.033999324}
+--- !u!65 &591326389
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 591326383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.46950626, y: 0.4509722, z: 0.06060809}
+  m_Center: {x: -0.0031285286, y: 0.0038006902, z: 0.4077622}
+--- !u!65 &591326390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 591326383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.46950626, y: 0.4509722, z: 0.056950808}
+  m_Center: {x: -0.0031285286, y: 0.0038006902, z: -0.4715246}
+--- !u!114 &591326391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 591326383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa097a134dc06841a97d4c49c821424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveParent: {fileID: 96190665}
+  offset: {x: 0, y: 0, z: 0}
+  ignoreThisCollider: {fileID: 0}
+  extraCollidersToIgnore: []
 --- !u!1 &870272518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1046,7 @@ MonoBehaviour:
   kleurtje: 1
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &870272520
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1049,7 +1060,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &870272521
 BoxCollider:
@@ -1112,11 +1123,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 870272518}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.034301758, y: 4.19, z: 0.44488615}
+  m_LocalPosition: {x: -12.884301, y: 4.19, z: 0.44488615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &890065641
 GameObject:
@@ -1154,6 +1165,7 @@ MonoBehaviour:
   kleurtje: 1
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &890065643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1167,7 +1179,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &890065644
 BoxCollider:
@@ -1230,11 +1242,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 890065641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1, y: 0.866, z: -1.523}
+  m_LocalPosition: {x: -16.949999, y: 0.866, z: -1.523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999708909
 GameObject:
@@ -1272,6 +1284,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &999708911
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1285,7 +1298,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &999708912
 BoxCollider:
@@ -1348,11 +1361,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 999708909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.13, y: 0.866, z: 3.97}
+  m_LocalPosition: {x: -16.98, y: 0.866, z: 3.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999835575
 GameObject:
@@ -1390,6 +1403,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &999835577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1403,7 +1417,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &999835578
 BoxCollider:
@@ -1466,11 +1480,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 999835575}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -4.132881, y: 4.19, z: 6.9740343}
+  m_LocalPosition: {x: -16.98288, y: 4.19, z: 6.9740343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1012217022
 GameObject:
@@ -1508,6 +1522,7 @@ MonoBehaviour:
   kleurtje: 2
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1012217024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1521,7 +1536,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1012217025
 BoxCollider:
@@ -1584,11 +1599,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1012217022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1, y: 0.866, z: 1.49}
+  m_LocalPosition: {x: -16.949999, y: 0.866, z: 1.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1087313197
 GameObject:
@@ -1650,7 +1665,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1087313197}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -12.849999, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1692,6 +1707,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 0
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1087862183
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1705,7 +1721,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1087862184
 BoxCollider:
@@ -1768,11 +1784,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1087862181}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -4.1342607, y: 4.19, z: 0.4269644}
+  m_LocalPosition: {x: -16.98426, y: 4.19, z: 0.4269644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1131647306
 GameObject:
@@ -1810,6 +1826,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 0
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1131647308
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1823,7 +1840,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1131647309
 BoxCollider:
@@ -1886,11 +1903,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1131647306}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.019708395, y: 4.19, z: -5.047932}
+  m_LocalPosition: {x: -12.830291, y: 4.19, z: -5.047932}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1142386182
 GameObject:
@@ -1928,6 +1945,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1142386184
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1941,7 +1959,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1142386185
 BoxCollider:
@@ -2004,11 +2022,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1142386182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.029999971, y: 0.866, z: 6.983}
+  m_LocalPosition: {x: -12.879999, y: 0.866, z: 6.983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1219310338
 GameObject:
@@ -2046,6 +2064,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1219310340
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2059,7 +2078,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1219310341
 BoxCollider:
@@ -2122,11 +2141,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1219310338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.13, y: 0.866, z: 6.983}
+  m_LocalPosition: {x: -16.98, y: 0.866, z: 6.983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1238891974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238891975}
+  m_Layer: 0
+  m_Name: RopePointB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1238891975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1238891974}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15.929999, y: 1.81, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1272216387
 GameObject:
@@ -2164,6 +2211,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 0
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1272216389
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2177,7 +2225,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1272216390
 BoxCollider:
@@ -2240,11 +2288,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1272216387}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -4.067084, y: 4.19, z: -8.078817}
+  m_LocalPosition: {x: -16.917084, y: 4.19, z: -8.078817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1305395377
 GameObject:
@@ -2354,6 +2402,7 @@ MonoBehaviour:
   kleurtje: 2
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1400778214
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2367,7 +2416,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1400778215
 BoxCollider:
@@ -2430,11 +2479,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1400778212}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -4.121093, y: 4.19, z: -2.5860054}
+  m_LocalPosition: {x: -16.971092, y: 4.19, z: -2.5860054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1433978966
 GameObject:
@@ -2472,6 +2521,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 0
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1433978968
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2485,7 +2535,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1433978969
 BoxCollider:
@@ -2548,40 +2598,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1433978966}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -4.0802536, y: 4.19, z: -5.0658526}
+  m_LocalPosition: {x: -16.930252, y: 4.19, z: -5.0658526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
---- !u!1 &1509426133
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1509426134}
-  m_Layer: 0
-  m_Name: RopePointA
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1509426134
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1509426133}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1576313070
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,6 +2640,7 @@ MonoBehaviour:
   kleurtje: 1
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1576313072
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2631,7 +2654,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1576313073
 BoxCollider:
@@ -2694,11 +2717,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1576313070}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.01974821, y: 4.19, z: 3.978983}
+  m_LocalPosition: {x: -12.869747, y: 4.19, z: 3.978983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1587852025
 GameObject:
@@ -2736,6 +2759,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 0
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1587852027
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2749,7 +2773,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1587852028
 BoxCollider:
@@ -2812,11 +2836,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1587852025}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.032878637, y: 4.19, z: -8.060904}
+  m_LocalPosition: {x: -12.817121, y: 4.19, z: -8.060904}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1819896578
 GameObject:
@@ -2854,6 +2878,7 @@ MonoBehaviour:
   kleurtje: 2
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1819896580
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2867,7 +2892,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1819896581
 BoxCollider:
@@ -2930,11 +2955,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1819896578}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.021131516, y: 4.19, z: -2.5680842}
+  m_LocalPosition: {x: -12.871131, y: 4.19, z: -2.5680842}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1898240688
 GameObject:
@@ -3017,7 +3042,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1898240688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.866, z: -1.523}
+  m_LocalPosition: {x: -12.849999, y: 0.866, z: -1.523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3036,7 +3061,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!114 &1898240694
 MonoBehaviour:
@@ -3054,6 +3079,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 0
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!1 &1920899200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3090,6 +3116,7 @@ MonoBehaviour:
   kleurtje: 1
   canBeAStartingPoint: 0
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &1920899202
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3103,7 +3130,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &1920899203
 BoxCollider:
@@ -3166,11 +3193,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1920899200}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -4.119708, y: 4.19, z: 3.9610624}
+  m_LocalPosition: {x: -16.969707, y: 4.19, z: 3.9610624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &2122779510
 GameObject:
@@ -3253,7 +3280,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2122779510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -12.849999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3295,6 +3322,7 @@ MonoBehaviour:
   kleurtje: 0
   canBeAStartingPoint: 1
   canBeEndPoint: 1
+  spoelColliders: {fileID: 591326383}
 --- !u!54 &2132642362
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3308,7 +3336,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 110
   m_CollisionDetection: 0
 --- !u!65 &2132642363
 BoxCollider:
@@ -3371,9 +3399,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2132642360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.866, z: 3.97}
+  m_LocalPosition: {x: -12.879999, y: 0.866, z: 3.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

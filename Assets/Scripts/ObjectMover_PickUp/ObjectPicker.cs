@@ -120,6 +120,7 @@ public class ObjectPicker : MonoBehaviour
     {
         if (e.target.gameObject.GetComponent<PickableObject>() != null)
         {
+            //Debug.Log(e.distance);
             type = PickerType.PickableObject;
             currentSelected = e.target.GetComponent<PickableObject>().moveParent;
             currentTarget = e.target.gameObject.GetComponent<PickableObject>();
