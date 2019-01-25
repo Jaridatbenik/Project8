@@ -16,7 +16,7 @@ public class Sequensing : MonoBehaviour {
         pick2 = GetComponent<ObjectPicker_Unlocks>();
         pick1.enabled = true;
         pick2.enabled = false;
-        inputDing.SetActive(false);
+        //inputDing.SetActive(false);
     }
 
     public void UpCount()
