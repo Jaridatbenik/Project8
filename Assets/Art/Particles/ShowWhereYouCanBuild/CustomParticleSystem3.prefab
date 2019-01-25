@@ -19,8 +19,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4586953209616412}
+  - component: {fileID: 114264431403639180}
   m_Layer: 0
-  m_Name: CustomParticleSystem2
+  m_Name: CustomParticleSystem3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,9 +50,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245473186362970}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.471, y: 0, z: -2.526}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -72.2, z: 0}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
   - {fileID: 4967118383435346}
   m_Father: {fileID: 0}
@@ -64,12 +65,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1498239702799638}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.057, y: 0.061, z: 0.042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4586953209616412}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114264431403639180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1245473186362970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353e1a236d053e14796cb18baf85265d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198679621212597134
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -80,7 +92,7 @@ ParticleSystem:
   lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -318,7 +330,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -724,7 +736,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.15
+      value: 0.1
       mode: 0
       spread: 0
       speed:
@@ -953,7 +965,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 5
+        scalar: 10
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -1010,7 +1022,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
+        scalar: 4
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -1452,9 +1464,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.12371576, g: 1, b: 0, a: 1}
-        key1: {r: 0.024430392, g: 0.5754717, b: 0.04005642, a: 0.3764706}
-        key2: {r: 0.6307976, g: 1, b: 0.2688679, a: 0.27450982}
+        key0: {r: 0.9780209, g: 1, b: 0, a: 1}
+        key1: {r: 0.745283, g: 0.7101969, b: 0.010546438, a: 0.3764706}
+        key2: {r: 1, g: 0.5120404, b: 0, a: 0.27450982}
         key3: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
         key4: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
         key5: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
@@ -2163,7 +2175,7 @@ ParticleSystem:
     speedModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.04
+      scalar: 0.01
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4790,7 +4802,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: cc94ffed622ef434eb25c0bb5bd45b82, type: 2}
+  - {fileID: 2100000, guid: 10c5b110f3f53304796b3f37fe35b582, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4812,7 +4824,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
-  m_SortMode: 2
+  m_SortMode: 3
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0

@@ -31,7 +31,7 @@ public class Sequensing : MonoBehaviour {
 
     void Update()
     {
-        if(currentBodyPart >= 7)
+        if(currentBodyPart >= 9)
         {
             inputDing.SetActive(true);
             pick1.enabled = false;
@@ -41,6 +41,11 @@ public class Sequensing : MonoBehaviour {
             inputDing.SetActive(false);
             pick1.enabled = true;
             pick2.enabled = false;
+        }
+
+        if(currentBodyPart == 8)
+        {
+
         }
     }
 

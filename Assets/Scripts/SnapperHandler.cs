@@ -22,6 +22,7 @@ public class SnapperHandler : MonoBehaviour {
 
     public void SpawnInBuildParticles(Vector3 worldPos)
     {
+        
         spawnedParticle = Instantiate(inBuildParticles, worldPos, Quaternion.identity);
             Destroy(spawnedParticle, 4f);
     }
