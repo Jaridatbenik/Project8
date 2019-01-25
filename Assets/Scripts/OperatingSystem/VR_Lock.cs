@@ -4,27 +4,16 @@ using UnityEngine;
 
 public class VR_Lock : MonoBehaviour
 {
-    Camera vrCam;
-    List<GameObject> hands = new List<GameObject>();
+    GameObject cameraRig;
 
     void Awake()
     {
-        vrCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        for(int i = 0; i < GameObject.FindGameObjectsWithTag("Hands").Length; i++)
-        {
-            hands.Add(GameObject.FindGameObjectsWithTag("Hands")[i]);
-        }
-        ChangeLockState(false);   
+        cameraRig = GameObject.Find("[CameraRig]");
+        ChangeLockState(false);
     }
 
     public void ChangeLockState(bool b)
     {
-        //vrCam.enabled = b;
-
-        //for(int i = 0; i < hands.Count; i++)
-        {
-            //hands[i].SetActive(b);
-            //(de)activate controller stuff here.
-        }
+        cameraRig.SetActive(b);
     }
 }

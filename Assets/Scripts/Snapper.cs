@@ -70,8 +70,12 @@ public class Snapper : MonoBehaviour
 
     public void StartBuilding()
     {
-        circleHand.SpawnCircle(4f, CircleTypes.ObjectSelection, CheckIfCorrect, Canceled);
-        hand.SpawnInBuildParticles(spawnParticlesHere == null ? transform.position : spawnParticlesHere.position);
+        try
+        {
+            circleHand.SpawnCircle(4f, CircleTypes.ObjectSelection, CheckIfCorrect, Canceled);
+            hand.SpawnInBuildParticles(spawnParticlesHere == null ? transform.position : spawnParticlesHere.position);
+        }
+        catch { }
     }
 
     public void WrongObject()
@@ -122,7 +126,7 @@ public class Snapper : MonoBehaviour
         seq.UpCount();
         pick.ReleaseObject();
         hand.SpawnCorrectParticles(spawnParticlesHere == null ? transform.position : spawnParticlesHere.position);
-        col.transform.SetParent(snapToThis != null ? snapToThis : parentObject);
+        correctObject.transform.SetParent(snapToThis != null ? snapToThis : parentObject);
         for (int i = 0; i < pick.transform.childCount; i++)
         {
             if (pick.transform.GetChild(i).GetComponent<PickableObject>() != null)
@@ -130,13 +134,14 @@ public class Snapper : MonoBehaviour
                 Destroy(pick.transform.GetChild(i).GetComponent<PickableObject>());
             }
         }
-        col.transform.localPosition = Vector3.zero;
-        col.transform.rotation = new Quaternion(0, 0, 0, 0);
+        correctObject.transform.localPosition = Vector3.zero;
+        correctObject.transform.rotation = new Quaternion(0, 0, 0, 0);
         Destroy(col.transform.GetChild(0).gameObject.GetComponent<PickableObject>());
         Destroy(col.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
         Destroy(col.GetComponent<Rigidbody>());
         Destroy(col);
         Destroy(GetComponent<BoxCollider>());
+
         hand.DestroyParticle();
         try
         {
