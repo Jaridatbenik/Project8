@@ -10,6 +10,8 @@ public class Sequensing : MonoBehaviour {
     ObjectPicker pick1;
     ObjectPicker_Unlocks pick2;
 
+    float timer = 0;
+
     private void Start()
     {
         pick1 = GetComponent<ObjectPicker>();
@@ -31,21 +33,55 @@ public class Sequensing : MonoBehaviour {
 
     void Update()
     {
-        if(currentBodyPart >= 9)
+        try
         {
-            inputDing.SetActive(true);
-            pick1.enabled = false;
-            pick2.enabled = true;
-        }else
-        {
-            inputDing.SetActive(false);
-            pick1.enabled = true;
-            pick2.enabled = false;
+            if (currentBodyPart >= 9)
+            {
+                inputDing.SetActive(true);
+                pick1.enabled = false;
+                pick2.enabled = true;
+            }
+            else
+            {
+                inputDing.SetActive(false);
+                pick1.enabled = true;
+                pick2.enabled = false;
+            }
         }
+        catch { }
 
-        if(currentBodyPart == 8)
+        List<SpoelHandler> handhand = new List<SpoelHandler>();
+        handhand.Clear();
+
+        if(currentBodyPart == 7)
         {
+            timer += Time.deltaTime;
+            if (timer > 3)
+            {
+                timer = 0;
+                foreach (SpoelHandler hand in FindObjectsOfType<SpoelHandler>())
+                {
+                    if (hand.canBeEndPoint && !hand.canBeAStartingPoint)
+                    {
+                        handhand.Add(hand);
+                    }
+                }
 
+                bool hasFailed = false;
+
+                foreach (SpoelHandler hand in handhand)
+                {
+                    if (hand.kleurtje != hand.isColor && !hand.hasCableAttached)
+                    {
+                        hasFailed = true;
+                    }
+                }
+                if (!hasFailed)
+                {
+                    Debug.Log("All are correct now");
+                    currentBodyPart = 8;
+                }
+            }
         }
     }
 

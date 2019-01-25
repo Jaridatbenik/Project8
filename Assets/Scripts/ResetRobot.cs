@@ -30,6 +30,11 @@ public class ResetRobot : MonoBehaviour {
         {
             Destroy(robotOnderdelen[i]);
         }
+        for(int i = 0; i < FindObjectsOfType<KabelData>().Length; i++)
+        {
+            Destroy(FindObjectsOfType<KabelData>()[i].gameObject);
+        }
+
         robotOnderdelen.Clear();
         FindObjectOfType<Sequensing>().currentBodyPart = 0;
         
