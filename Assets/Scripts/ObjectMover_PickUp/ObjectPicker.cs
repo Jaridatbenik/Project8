@@ -41,56 +41,145 @@ public class ObjectPicker : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+
+            foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+            {
+                attachObj.EnableMe();
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+
+            foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+            {
+                attachObj.DisableMe();
+            }
+        }
+
+        try { 
         if(cooldown < 2)
         {
             cooldown++;
         }
 
-        if(currentSelected != null)
-        {
-            if (isOnObject)
-            {
-                //currentSelected.gameObject.GetComponent<Renderer>().material.color = Color.green;
-
-            }else
+            if (currentSelected != null)
             {
                 if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
                 {
-                    return;
+
+                    foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+                    {
+                        attachObj.EnableMe();
+                    }
                 }
-            }
+                else if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
+                {
+                    foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+                    {
+                        attachObj.DisableMe();
+                    }
+                }
+                if (isOnObject)
+                {
+
+                }
+                else
+                {
+                    if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
+                    {
+
+                        foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+                        {
+                            attachObj.EnableMe();
+                        }
+                        return;
+                    }
+                    else if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
+                    {
+                        foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+                        {
+                            attachObj.DisableMe();
+                        }
+                        return;
+                    }
+                }
 
 
-            if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown() && cooldown > 1)
-            {
-                if (type == PickerType.PickableObject)
+                if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown() && cooldown > 1)
                 {
-                    PickupObject();
-                }else if(type == PickerType.Lever)
-                {
-                    lever.SwitchLever();
+                    if (type == PickerType.PickableObject)
+                    {
+                        PickupObject();
+                    } else if (type == PickerType.Lever)
+                    {
+                        lever.SwitchLever();
+                    }
+                    cooldown = 0;
+                    /*
+                    currentSelected.SetActive(false);
+                    currentTarget.referenceObject.SetActive(true);
+                    currentTarget.referenceObject.transform.SetParent(transform);
+                    currentTarget.referenceObject.transform.localPosition = new Vector3(0, 0, 0.2f);
+                    pointer.enabled = false;
+                    */
                 }
-                cooldown = 0;
-                /*
-                currentSelected.SetActive(false);
-                currentTarget.referenceObject.SetActive(true);
-                currentTarget.referenceObject.transform.SetParent(transform);
-                currentTarget.referenceObject.transform.localPosition = new Vector3(0, 0, 0.2f);
-                pointer.enabled = false;
-                */
-            }
-            if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
+                if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
+                {
+                    ReleaseObject();
+                    /*
+                    currentSelected.SetActive(true);
+                    currentTarget.referenceObject.SetActive(false);
+                    currentTarget.referenceObject.transform.SetParent(null);
+                    currentTarget.referenceObject.transform.position = new Vector3(0, 0, 0);
+                    pointer.enabled = true;
+                    */
+                }
+            } else
             {
-                ReleaseObject();
-                /*
-                currentSelected.SetActive(true);
-                currentTarget.referenceObject.SetActive(false);
-                currentTarget.referenceObject.transform.SetParent(null);
-                currentTarget.referenceObject.transform.position = new Vector3(0, 0, 0);
-                pointer.enabled = true;
-                */
+                if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
+                {
+                    foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+                    {
+                        attachObj.EnableMe();
+                    }
+                }
+                else if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
+                {
+                    foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+                    {
+                        attachObj.DisableMe();
+                    }
+                }
+                if (isOnObject)
+                {
+
+                }
+                else
+                {
+                    if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerDown())
+                    {
+
+                        foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+                        {
+                            attachObj.EnableMe();
+                        }
+                        return;
+                    }
+                    else if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost)).GetHairTriggerUp())
+                    {
+                        foreach (CanAttachHereParticleHandler attachObj in FindObjectsOfType<CanAttachHereParticleHandler>())
+                        {
+                            attachObj.DisableMe();
+                        }
+                        return;
+                    }
+                }
             }
         }
+        catch { }
     }
 
     void PickupObject()

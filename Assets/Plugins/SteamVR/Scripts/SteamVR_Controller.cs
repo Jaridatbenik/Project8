@@ -141,14 +141,14 @@ public class SteamVR_Controller
 
 	public static Device Input(int deviceIndex)
 	{
-		if (devices == null)
-		{
-			devices = new Device[OpenVR.k_unMaxTrackedDeviceCount];
-			for (uint i = 0; i < devices.Length; i++)
-				devices[i] = new Device(i);
-		}
+            if (devices == null)
+            {
+                devices = new Device[OpenVR.k_unMaxTrackedDeviceCount];
+                for (uint i = 0; i < devices.Length; i++)
+                    devices[i] = new Device(i);
+            }
 
-		return devices[deviceIndex];
+            return devices[deviceIndex];
 	}
 
 	public static void Update()
