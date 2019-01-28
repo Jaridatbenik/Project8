@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Hands
   - BuilderApp
+  - Button
+  - EpicButton
+  - UltimateHendel
+  - UltimateReset
   layers:
   - Default
   - TransparentFX

@@ -14,19 +14,6 @@ public class SpoelHandler : MonoBehaviour
     public KabelKleur isColor;
     public bool hasCableAttached = false;
 
-    public GameObject spoelColliders;
-
-    public void Start()
-    {
-        try
-        {
-            for (int i = 0; i < spoelColliders.GetComponents<Collider>().Length; i++)
-            {
-                Physics.IgnoreCollision(spoelColliders.GetComponents<Collider>()[i], GetComponent<Collider>());
-            }
-        }catch { }
-    }
-
     void Update()
     {
         try
