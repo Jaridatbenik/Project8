@@ -11,6 +11,26 @@ public class Spoel : MonoBehaviour {
 
     public GameObject kabelPrefab;
 
+    public List<Collider> ignoreCollisionWithThese = new List<Collider>();
+
+    private void Start()
+    {
+        IgnoreTheCollision();
+    }
+
+    public void IgnoreTheCollision()
+    {
+        Collider[] cols = transform.GetChild(1).GetComponents<Collider>();
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            for(int f = 0; f < ignoreCollisionWithThese.Count; f++)
+            {
+                Physics.IgnoreCollision(cols[i], ignoreCollisionWithThese[f]);
+            }
+        }
+    }
+
     public GameObject CreateKabel(SpoelHandler start)
     {
         GameObject obj = Instantiate(kabelPrefab);

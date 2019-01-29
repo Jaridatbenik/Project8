@@ -11,7 +11,7 @@ public class Snapper : MonoBehaviour
     /// If left blank or = null it will not snap to a selected object but just to something, 
     /// I don't know its been 4 weeks since I looked at this shit
     /// </summary>
-    public Transform snapToThis;
+    public GameObject snapToThis;
     /// <summary>
     /// If left blank or = null it will spawn the particles on the default location
     /// </summary>
@@ -34,7 +34,7 @@ public class Snapper : MonoBehaviour
     public List<Collider> ignoreThisIfNeedid = new List<Collider>();
 
     [HideInInspector]
-    public Transform parentObject;
+    public GameObject parentObject;
 
     public int neededSequence = 0;
 
@@ -44,11 +44,15 @@ public class Snapper : MonoBehaviour
         hand = FindObjectOfType<SnapperHandler>();
         seq = FindObjectOfType<Sequensing>();
         pick = FindObjectOfType<ObjectPicker>();
-        parentObject = transform.parent;
+        parentObject = transform.parent.gameObject;
 
         for (int i = 0; i < ignoreThisIfNeedid.Count; i++)
         {
-            Physics.IgnoreCollision(ignoreThisIfNeedid[i], GetComponent<BoxCollider>());
+            try
+            {
+                Physics.IgnoreCollision(ignoreThisIfNeedid[i], GetComponent<BoxCollider>());
+            }
+            catch { }
         }
     }
 
@@ -88,45 +92,25 @@ public class Snapper : MonoBehaviour
     {
         StaticSnapperHandler.SendCompletion(this);
 
-        /*
-        if (col.gameObject != correctObject || neededSequence != seq.currentBodyPart)
-        {
-            hand.SpawnWrongParticles(transform.position);
-            hand.DestroyParticle();
-        }
-        else
-        {
-            seq.UpCount();
-            pick.ReleaseObject();
-            hand.SpawnCorrectParticles(transform.position);
-            col.transform.SetParent(snapToThis != null ? snapToThis : parentObject);
-            for (int i = 0; i < pick.transform.childCount; i++)
-            {
-                if (pick.transform.GetChild(i).GetComponent<PickableObject>() != null)
-                {
-                    Destroy(pick.transform.GetChild(i).GetComponent<PickableObject>());
-                }
-            }
-            col.transform.localPosition = Vector3.zero;
-            col.transform.rotation = new Quaternion(0, 0, 0, 0);
-            Destroy(col.transform.GetChild(0).gameObject.GetComponent<PickableObject>());
-            Destroy(col.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
-            Destroy(col.GetComponent<Rigidbody>());
-            Destroy(col);
-            Destroy(GetComponent<BoxCollider>());
-            Destroy(this);
-            hand.DestroyParticle();
-        }
-        */
-        Debug.Log("Finished :" + this.name);
+
     }
 
     public void OnFinish()
     {
+        Debug.Log("Finished :" + this.name);
+
         seq.UpCount();
+        Destroy(col.transform.GetComponent<Rigidbody>());
+        if(pick.currentSelected.gameObject == col.gameObject)
+        {
+            pick.currentSelected = null;
+        }
         pick.ReleaseObject();
         hand.SpawnCorrectParticles(spawnParticlesHere == null ? transform.position : spawnParticlesHere.position);
-        correctObject.transform.SetParent(snapToThis != null ? snapToThis : parentObject);
+
+        correctObject.transform.SetParent(snapToThis != null ? snapToThis.transform : parentObject.transform);
+
+        
         for (int i = 0; i < pick.transform.childCount; i++)
         {
             if (pick.transform.GetChild(i).GetComponent<PickableObject>() != null)
@@ -134,13 +118,17 @@ public class Snapper : MonoBehaviour
                 Destroy(pick.transform.GetChild(i).GetComponent<PickableObject>());
             }
         }
+        
+
+
         correctObject.transform.localPosition = Vector3.zero;
         correctObject.transform.rotation = new Quaternion(0, 0, 0, 0);
-        Destroy(col.transform.GetChild(0).gameObject.GetComponent<PickableObject>());
-        Destroy(col.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
-        Destroy(col.GetComponent<Rigidbody>());
-        Destroy(col);
+
+        Destroy(correctObject.transform.GetChild(0).gameObject.GetComponent<PickableObject>());
+        Destroy(correctObject.transform.GetChild(0).gameObject.GetComponent<BoxCollider>());
+        Destroy(correctObject.GetComponent<Rigidbody>());
         Destroy(GetComponent<BoxCollider>());
+        Destroy(correctObject.GetComponent<Collider>());
 
         hand.DestroyParticle();
         try
@@ -148,7 +136,9 @@ public class Snapper : MonoBehaviour
             Destroy(canAttachParticle);
         }catch { }
 
+
         Destroy(this);
+        return;
     }
 
     public void Canceled()
@@ -161,8 +151,7 @@ public class Snapper : MonoBehaviour
 public static class StaticSnapperHandler
 {
     public static Snapper snap;
-
-
+    
     public static void Set(Snapper snapsnap)
     {
         snap = snapsnap;

@@ -11,18 +11,8 @@ public class SpoelHandler : MonoBehaviour
     public bool canBeAStartingPoint = true;
     public bool canBeEndPoint = true;
 
-    public GameObject spoelColliders;
-
-    void Start()
-    {
-        try
-        {
-            for (int i = 0; i < spoelColliders.GetComponents<Collider>().Length; i++)
-            {
-                Physics.IgnoreCollision(spoelColliders.GetComponents<Collider>()[i], GetComponent<Collider>());
-            }
-        }catch { }
-    }
+    public KabelKleur isColor;
+    public bool hasCableAttached = false;
 
     void Update()
     {
@@ -47,7 +37,7 @@ public class SpoelHandler : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if(data == null && col.GetComponent<Spoel>() != null)
+        if (data == null && col.GetComponent<Spoel>() != null)
         {
             Debug.Log("Ik raak een leeg block");
             if (col.GetComponent<Spoel>().kabelData == null && canBeAStartingPoint)
@@ -55,54 +45,68 @@ public class SpoelHandler : MonoBehaviour
                 Debug.Log("Kabel Gestart");
                 col.GetComponent<Spoel>().CreateKabel(this);
                 data = col.GetComponent<Spoel>().kabelData;
-            }else
+            }
+            else
             {
                 if (canBeEndPoint)
                 {
-                    Debug.Log("Kabel Gestopt");
-                    col.GetComponent<Spoel>().AttachKabelToPoint(this);
-                    //data = null;
-                    data = col.GetComponent<Spoel>().kabelData;
-                    col.GetComponent<Spoel>().kabelData = null;
-                    col.GetComponent<Spoel>().line = null;
-                }
-            }
-        }else
-        {
-            if (col.GetComponent<Spoel>().kabelData != null)
-            {
-                Debug.Log("Ik trigger");
-                if (col.GetComponent<Spoel>().kabelData.startPoint.gameObject == gameObject && col.GetComponent<Spoel>().kabelData.endPoint == null)
-                {
-                    Debug.Log("Ik trigger ook");
-                    Debug.Log(col.GetComponent<Spoel>().kabelData.startPoint.gameObject + " : " + gameObject);
-                    Destroy(data.gameObject);
-                }
-                Debug.Log("End: " + col.GetComponent<Spoel>().kabelData.endPoint + " : Start: " + col.GetComponent<Spoel>().kabelData.startPoint);
-                if (data.endPoint != null && data.startPoint != null)
-                {
-                    if (canBeEndPoint)
+                    if (!hasCableAttached)
                     {
-                        Debug.Log("nu moet hij detatchen");
-                        data.RemoveLine();
+                        Debug.Log("Kabel Gestopt");
                         col.GetComponent<Spoel>().AttachKabelToPoint(this);
+                        //data = null;
                         data = col.GetComponent<Spoel>().kabelData;
+                        isColor = data.kleur;
+                        hasCableAttached = true;
                         col.GetComponent<Spoel>().kabelData = null;
                         col.GetComponent<Spoel>().line = null;
                     }
-                }
-            }else
-            {
-                if (canBeAStartingPoint)
-                {
-                    data.RemoveLine();
 
-                    col.GetComponent<Spoel>().CreateKabel(this);
-                    data = col.GetComponent<Spoel>().kabelData;
-
-                    Debug.Log("Wants to start but a cable is already here");
                 }
             }
+        }
+        else
+        {
+            try
+            {
+                if (col.GetComponent<Spoel>().kabelData != null)
+                {
+                    Debug.Log("Ik trigger");
+                    if (col.GetComponent<Spoel>().kabelData.startPoint.gameObject == gameObject && col.GetComponent<Spoel>().kabelData.endPoint == null)
+                    {
+                        Debug.Log("Ik trigger ook");
+                        Debug.Log(col.GetComponent<Spoel>().kabelData.startPoint.gameObject + " : " + gameObject);
+                        Destroy(data.gameObject);
+                        hasCableAttached = false;
+                    }
+                    Debug.Log("End: " + col.GetComponent<Spoel>().kabelData.endPoint + " : Start: " + col.GetComponent<Spoel>().kabelData.startPoint);
+                    if (data.endPoint != null && data.startPoint != null)
+                    {
+                        if (canBeEndPoint)
+                        {
+                            Debug.Log("nu moet hij detatchen");
+                            data.RemoveLine();
+                            col.GetComponent<Spoel>().AttachKabelToPoint(this);
+                            data = col.GetComponent<Spoel>().kabelData;
+                            col.GetComponent<Spoel>().kabelData = null;
+                            col.GetComponent<Spoel>().line = null;
+                        }
+                    }
+                }
+                else
+                {
+                    if (canBeAStartingPoint)
+                    {
+                        data.RemoveLine();
+
+                        col.GetComponent<Spoel>().CreateKabel(this);
+                        data = col.GetComponent<Spoel>().kabelData;
+                        hasCableAttached = false;
+                        Debug.Log("Wants to start but a cable is already here");
+                    }
+                }
+            }
+            catch { }
         }
     }
 
