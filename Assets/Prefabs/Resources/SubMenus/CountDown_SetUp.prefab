@@ -1236,7 +1236,6 @@ MonoBehaviour:
   pressedButton: {fileID: 0}
   shrunkPoints: []
   shrunkPos: {x: 0, y: 0}
-  darkImage: {fileID: 0}
 --- !u!114 &114801629252237616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1694,7 +1693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24387dd0ef1c5864ba8e07faef936cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: NewSeppoTestScene
+  targetSceneName: SceneMetNieuweDingen
 --- !u!114 &114960544957895948
 MonoBehaviour:
   m_ObjectHideFlags: 1

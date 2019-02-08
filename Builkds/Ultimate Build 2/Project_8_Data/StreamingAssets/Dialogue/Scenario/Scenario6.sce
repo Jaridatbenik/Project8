@@ -1,0 +1,9 @@
+Init
+{
+<DialogFile>:Dialog1
+}
+Script
+{
+[START]:<Line1]
+<Line1>:[EXIT]
+}

@@ -217,7 +217,6 @@ MonoBehaviour:
   pressedButton: {fileID: 0}
   shrunkPoints: []
   shrunkPos: {x: 0, y: 0}
-  darkImage: {fileID: 0}
 --- !u!114 &114105164313549386
 MonoBehaviour:
   m_ObjectHideFlags: 1

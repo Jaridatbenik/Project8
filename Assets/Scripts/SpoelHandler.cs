@@ -16,6 +16,11 @@ public class SpoelHandler : MonoBehaviour
 
     void Update()
     {
+
+        if(data == null)
+        {
+            hasCableAttached = false;
+        }
         try
         {
             if (canBeAStartingPoint)
@@ -50,17 +55,21 @@ public class SpoelHandler : MonoBehaviour
             {
                 if (canBeEndPoint)
                 {
-                    if (!hasCableAttached)
+                    try
                     {
-                        Debug.Log("Kabel Gestopt");
-                        col.GetComponent<Spoel>().AttachKabelToPoint(this);
-                        //data = null;
-                        data = col.GetComponent<Spoel>().kabelData;
-                        isColor = data.kleur;
-                        hasCableAttached = true;
-                        col.GetComponent<Spoel>().kabelData = null;
-                        col.GetComponent<Spoel>().line = null;
+                        if (!hasCableAttached)
+                        {
+                            Debug.Log("Kabel Gestopt");
+                            col.GetComponent<Spoel>().AttachKabelToPoint(this);
+                            //data = null;
+                            data = col.GetComponent<Spoel>().kabelData;
+                            isColor = data.kleur;
+                            hasCableAttached = true;
+                            col.GetComponent<Spoel>().kabelData = null;
+                            col.GetComponent<Spoel>().line = null;
+                        }
                     }
+                    catch { }
 
                 }
             }
